@@ -4,10 +4,6 @@ import {Nullable} from '../../shared/nullable';
 
 export class InMemoryFileHashRepository implements FileHashRepository {
     constructor(public readonly database: FileHash[] = []) {
-        this.database.push(new FileHash({
-            filePath: 'test',
-            hash: 'test',
-        }));
     }
 
     findByFilePath(filePath: string): Promise<Nullable<FileHash>> {

@@ -46,7 +46,7 @@ describe('Feature: Get file hash', () => {
 
         it('Given a file path, when I get the file hash, then I should not get the file hash', async () => {
             const request = {
-                filePath: 'another-file.json',
+                filePath: 'not-existing-file.json',
             };
             await getFileHashUseCase.handle(request);
             expect(fileHashPresenter.getFileHash()).toBeNull();
