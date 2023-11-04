@@ -1,9 +1,9 @@
-import {FileHash} from "../entities/file-hash";
+import { FileHash } from '../entities/file-hash';
 
 export const FILE_HASH_PRESENTER = Symbol('FILE_HASH_PRESENTER');
 
 export interface FileHashPresenter {
-  present(fileHash: FileHash): Promise<void>;
+  present(fileHash: FileHash): void;
 
-  presentNoFileHash(): Promise<void>;
+  presentNoFileHash(): void;
 }

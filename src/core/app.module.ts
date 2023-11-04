@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import {FileHashesModule} from "../file-hashes/file-hashes.module";
+import { FileHashesModule } from '../file-hashes/file-hashes.module';
 
 @Module({
-  imports: [
-      FileHashesModule,
-  ],
+  imports: [FileHashesModule],
   controllers: [AppController],
   providers: [AppService],
 })

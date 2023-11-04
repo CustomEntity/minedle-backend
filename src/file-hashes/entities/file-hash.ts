@@ -1,16 +1,16 @@
-import {Entity} from "../../shared/entity";
+import { Entity } from '../../shared/entity';
 
 export type FileHashData = {
-    filePath: string;
-    hash: string;
-}
+  filePath: string;
+  hash: string;
+};
 
 export class FileHash extends Entity<FileHashData> {
-    get filePath(): string {
-        return this.data.filePath;
-    }
+  get filePath(): string {
+    return this.data.filePath;
+  }
 
-    get hash(): string {
-        return this.data.hash;
-    }
+  get hash(): string {
+    return this.data.hash;
+  }
 }
