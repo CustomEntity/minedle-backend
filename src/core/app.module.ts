@@ -4,9 +4,13 @@ import { AppService } from './app.service';
 import { FileHashesModule } from '../file-hashes/file-hashes.module';
 import {ConfigModule} from "@nestjs/config";
 import configuration from "./config/configuration";
+import {MaterialsModule} from "../materials/materials.module";
+import {RecipesModule} from "../recipes/recipes.module";
 
 @Module({
   imports: [FileHashesModule,
+      MaterialsModule,
+      RecipesModule,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
