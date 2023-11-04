@@ -1,7 +1,7 @@
 import {InMemoryFileHashRepository} from '../adapters/in-memory-file-hash-repository';
-import {GetFileHashUseCase} from './get-file-hash-use-case';
+import {GetFileHashUseCase} from '../usecases/get-file-hash-use-case';
 import {FileHash} from '../entities/file-hash';
-import {FakeFileHashPresenter} from "../presenters/fake-file-hash-presenter";
+import {FakeFileHashPresenter} from "./fake-file-hash-presenter";
 
 describe('Feature: Get file hash', () => {
     const fileHash = new FileHash({

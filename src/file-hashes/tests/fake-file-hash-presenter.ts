@@ -1,5 +1,5 @@
 import {FileHash} from '../entities/file-hash';
-import {FileHashPresenter} from "./file-hash-presenter.interface";
+import {FileHashPresenter} from "../presenters/file-hash-presenter.interface";
 import {Nullable} from "../../shared/nullable";
 
 export class FakeFileHashPresenter implements FileHashPresenter {

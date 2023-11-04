@@ -5,16 +5,20 @@ import {InMemoryFileHashRepository} from "./adapters/in-memory-file-hash-reposit
 import {FILE_HASH_PRESENTER} from "./presenters/file-hash-presenter.interface";
 import {HttpFileHashPresenter} from "./presenters/http-file-hash-presenter";
 import {GetFileHashUseCase} from "./usecases/get-file-hash-use-case";
+import {KnexService} from "../core/adapters/knex/knex.service";
+import {KnexFileHashRepository} from "./adapters/knex-file-hash-repository";
+import {KnexModule} from "../core/adapters/knex/knex.module";
 
 @Module({
-    imports: [],
+    imports: [KnexModule],
     controllers: [FileHashController],
     providers: [
         {
             provide: FILE_HASH_REPOSITORY,
-            useFactory: () => {
-                return new InMemoryFileHashRepository()
-            }
+            useFactory: (knexService: KnexService) => {
+                return new KnexFileHashRepository(knexService.connection);
+            },
+            inject: [KnexService],
         },
         {
             provide: FILE_HASH_PRESENTER,
