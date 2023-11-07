@@ -1,19 +1,18 @@
-import {FileHashRepository} from '../ports/file-hash-repository.interface';
-import {FileHash} from '../entities/file-hash';
-import {Nullable} from '../../shared/nullable';
+import { FileHashRepository } from '../ports/file-hash-repository.interface';
+import { FileHash } from '../entities/file-hash';
+import { Nullable } from '../../shared/nullable';
 
 export class InMemoryFileHashRepository implements FileHashRepository {
-    constructor(public readonly database: FileHash[] = []) {
-    }
+  constructor(public readonly database: FileHash[] = []) {}
 
-    findByFilePath(filePath: string): Promise<Nullable<FileHash>> {
-        return Promise.resolve(
-            this.database.find((fileHash) => fileHash.filePath === filePath) ?? null,
-        );
-    }
+  findByFilePath(filePath: string): Promise<Nullable<FileHash>> {
+    return Promise.resolve(
+      this.database.find((fileHash) => fileHash.filePath === filePath) ?? null,
+    );
+  }
 
-    save(fileHash: FileHash): Promise<void> {
-        this.database.push(fileHash);
-        return Promise.resolve();
-    }
+  save(fileHash: FileHash): Promise<void> {
+    this.database.push(fileHash);
+    return Promise.resolve();
+  }
 }

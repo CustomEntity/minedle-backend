@@ -1,5 +1,5 @@
 import { Nullable } from '../../shared/nullable';
-import {Recipe} from "../entities/recipe";
+import { Recipe } from '../entities/recipe';
 
 export const RECIPE_REPOSITORY = Symbol('RECIPE_REPOSITORY');
 

@@ -1,4 +1,4 @@
 export type FileHashViewmodel = {
-    filePath: string;
-    hash: string;
-}
+  filePath: string;
+  hash: string;
+};

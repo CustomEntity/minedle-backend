@@ -1,5 +1,5 @@
-import {Global, Module} from '@nestjs/common';
-import {KnexService} from './knex.service';
+import { Global, Module } from '@nestjs/common';
+import { KnexService } from './knex.service';
 
 export const I_KNEX_CONNECTION = Symbol('I_KNEX_CONNECTION');
 
