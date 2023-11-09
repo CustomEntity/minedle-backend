@@ -17,10 +17,12 @@ async function bootstrap() {
     origin: function (origin, callback) {
       const allowedOrigins = ['http://localhost:5173'];
       const domainRegex = /^[a-z]+:\/\/(?:[^\/]*\.+)*minedle\.eu/;
+      const ngrokRegex = /^[a-z]+:\/\/(?:[^\/]*\.+)*ngrok-free\.app/;
       if (
         !origin ||
         allowedOrigins.includes(origin) ||
-        domainRegex.test(origin)
+        domainRegex.test(origin) ||
+        ngrokRegex.test(origin)
       ) {
         callback(null, true);
       } else {

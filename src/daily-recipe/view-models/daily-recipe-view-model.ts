@@ -1,6 +1,6 @@
 export type DailyRecipeViewModel = {
   id: number;
   recipeId: number;
-  proposedMaterials: { id: number; name: string }[];
+  proposedMaterials: number[];
   date: Date;
 };

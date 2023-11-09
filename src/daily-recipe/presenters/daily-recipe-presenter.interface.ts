@@ -1,9 +1,9 @@
-import { DailyRecipeDto } from '../dtos/daily-recipe-dto';
+import {DailyRecipe} from "../entities/daily-recipe";
 
 export const DAILY_RECIPE_PRESENTER = Symbol('DAILY_RECIPE_PRESENTER');
 
 export interface DailyRecipePresenter {
-  present(getDailyRecipeViewModel: DailyRecipeDto): void;
+  present(getDailyRecipeViewModel: DailyRecipe): void;
 
   presentNoDailyRecipe(): void;
 }

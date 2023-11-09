@@ -1,7 +1,7 @@
 import { DailyRecipePresenter } from './daily-recipe-presenter.interface';
 import { DailyRecipeViewModel } from '../view-models/daily-recipe-view-model';
 import * as assert from 'assert';
-import {InternalServerErrorException} from "@nestjs/common";
+import { InternalServerErrorException } from '@nestjs/common';
 
 export class HttpDailyRecipePresenter implements DailyRecipePresenter {
   private getDailyRecipeViewModel: DailyRecipeViewModel | null = null;
