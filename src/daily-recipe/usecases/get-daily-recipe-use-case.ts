@@ -1,6 +1,6 @@
 import { UseCase } from '../../shared/usecase';
 import { DailyRecipeRepository } from '../ports/daily-recipe-repository.interface';
-import { DailyRecipePresenter } from '../presenters/daily-recipe-presenter.interface';
+import { DailyRecipeDtoPresenter } from '../presenters/daily-recipe-dto-presenter.interface';
 import { DateProvider } from '../../system/date/date-provider.interface';
 
 export type Request = void;
@@ -9,7 +9,7 @@ export class GetDailyRecipeUseCase extends UseCase<Request> {
   constructor(
     private readonly dateProvider: DateProvider,
     private readonly dailyRecipeRepository: DailyRecipeRepository,
-    private readonly dailyRecipePresenter: DailyRecipePresenter,
+    private readonly dailyRecipePresenter: DailyRecipeDtoPresenter,
   ) {
     super();
   }

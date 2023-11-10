@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Mapper } from '../../shared/mapper';
 import { DailyRecipeRepository } from '../ports/daily-recipe-repository.interface';
 import { Nullable } from '../../shared/nullable';
-import { DailyRecipe } from '../entities/daily-recipe';
+import { DailyRecipeDto } from '../dto/daily-recipe-dto';
 
 export const DAILY_RECIPE_TABLE = 'daily_recipe';
 
@@ -12,10 +12,11 @@ export class KnexDailyRecipeRepository implements DailyRecipeRepository {
 
   constructor(private readonly connection: any) {}
 
-  async findByDate(date: Date): Promise<Nullable<DailyRecipe>> {
+  async findByDate(date: Date): Promise<Nullable<DailyRecipeDto>> {
     const data = await this.connection(DAILY_RECIPE_TABLE)
       .select('*')
       .where('date', date.toISOString())
+      .join('recipes', 'recipes.id', '=', DAILY_RECIPE_TABLE + '.recipe_id')
       .first();
 
     if (!data) {
@@ -33,15 +34,16 @@ export class KnexDailyRecipeRepository implements DailyRecipeRepository {
   }
 }
 
-export class KnexDailyRecipeMapper extends Mapper<DailyRecipe> {
-  toEntity(data: any): DailyRecipe {
-    return new DailyRecipe({
+export class KnexDailyRecipeMapper extends Mapper<DailyRecipeDto> {
+  toEntity(data: any): DailyRecipeDto {
+    return {
       id: data.id,
       recipeId: data.recipe_id,
+      resultMaterialId: data.result_material_id,
       proposedMaterials: data.proposed_materials,
       date: data.date,
-    });
+    };
   }
 
-  toPersistence(entity: DailyRecipe): any {}
+  toPersistence(entity: DailyRecipeDto): any {}
 }

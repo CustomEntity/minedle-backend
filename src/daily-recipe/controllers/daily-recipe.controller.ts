@@ -7,16 +7,16 @@ import {
   Res,
 } from '@nestjs/common';
 import { GetDailyRecipeUseCase } from '../usecases/get-daily-recipe-use-case';
-import { DAILY_RECIPE_PRESENTER } from '../presenters/daily-recipe-presenter.interface';
-import { HttpDailyRecipePresenter } from '../presenters/http-daily-recipe-presenter';
+import { HttpDailyRecipeDtoPresenter } from '../presenters/http-daily-recipe-dto-presenter';
 import { FastifyReply } from 'fastify';
+import {DAILY_RECIPE_DTO_PRESENTER} from "../presenters/daily-recipe-dto-presenter.interface";
 
 @Controller('daily-recipe')
 export class DailyRecipeController {
   constructor(
     private getDailyRecipeUseCase: GetDailyRecipeUseCase,
-    @Inject(DAILY_RECIPE_PRESENTER)
-    private dailyRecipePresenter: HttpDailyRecipePresenter,
+    @Inject(DAILY_RECIPE_DTO_PRESENTER)
+    private dailyRecipePresenter: HttpDailyRecipeDtoPresenter,
   ) {}
 
   @Get()
